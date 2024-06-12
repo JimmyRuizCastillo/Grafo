@@ -1,27 +1,45 @@
 import LinkedList from "./LinkedList.mjs"
+import Vertex from "./Vertex.mjs"
 export default class Graph {
     #matrizAdyacencia = []
     #map = new Map()
-    #linkedList = new LinkedList()
 
     constructor() {}
 
     addVertices(...vertices) {
         for (let value of vertices) {
             this.#matrizAdyacencia.push([])
-            this.#map.set(value,this.#matrizAdyacencia.length-1)
+            this.#map.set(value,[this.#matrizAdyacencia.length-1,new LinkedList()])
         }
+    }
+
+    printMatriz(callback){
+        for (let index = 0; index < this.#matrizAdyacencia.length; index++) {
+            let row=""
+            for (let j = 0; j < this.#matrizAdyacencia.length; j++) {
+                row+=this.#matrizAdyacencia[index][j] + " "
+            }
+            callback(row)
+        }
+    }
+
+    printMap(callback){
+        this.#map.forEach((value,key)=>{
+            callback(value,key)
+        })
     }
     
 
     addV(value) {
         this.#matrizAdyacencia.push([])
-        this.#map.set(value,this.#matrizAdyacencia.length-1)
+        this.#map.set(value,[this.#matrizAdyacencia.length-1,new LinkedList()])
     }
 
     addConexion(start, end, weight=1){
         if (this.#map.has(start) && this.#map.has(end)) {
-            this.#matrizAdyacencia[this.#map.get(start)][this.#map.get(end)] = weight
+            this.#matrizAdyacencia[this.#map.get(start)[0]][this.#map.get(end)[0]] = weight
+            this.#matrizAdyacencia[this.#map.get(end)[0]][this.#map.get(start)[0]] = weight
+            this.#map.get(start)[1].add(new Vertex(end,weight))
             return true
         }
         return false;

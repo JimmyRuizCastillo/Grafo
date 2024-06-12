@@ -1,5 +1,4 @@
 class Node{
-
     value
     next
     constructor(value){

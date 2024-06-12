@@ -11,7 +11,6 @@ class LinkedList{
         let node = new Node(value)
         if(this.#head==null){
             this.#head = node
-            this.count = this.count + 1
         }
         else{
             let current = this.#head
@@ -20,8 +19,18 @@ class LinkedList{
             }
             current.next = node
         }
-        
+        this.count++
     }
+
+    traverse(callback){
+        let current = this.#head
+        while(current){
+            callback(current)
+            //console.log(current)
+            current = current.next
+        }
+    }
+
 }
 
 export default LinkedList
