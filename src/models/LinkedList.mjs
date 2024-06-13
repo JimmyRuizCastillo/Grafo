@@ -25,10 +25,14 @@ class LinkedList{
     traverse(callback){
         let current = this.#head
         while(current){
-            callback(current)
+            callback(current.value)
             //console.log(current)
             current = current.next
         }
+    }
+
+    size(){
+        return this.count
     }
 
 }
