@@ -3,10 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
-    Acá estara el grafo con matriz de adyancencia
+    <div class="container-father">
+        <div id="page-name">GRAFO</div>
+        <div id="page-sub-name">Viajes</div>
+        <div id="add" class="container-tittle-elements">
+            <h2 class="text-tittle-elements">BUSCAR RUTAS</h2>
+            <div class="container-elements">
+                <h2>Nombre de la ciudad origen</h2>
+                <form>
+                    <select id="comboCityOrigin">
+                        
+                    </select>
+                  </form>
+                <h2>Nombre de la ciudad de destino</h2>
+                <select id="comboCityDestiny">
+                        
+                </select>
+                <button id="btnCheck">Verificar viaje</button>
+                <h3 id="validation"></h3>
+            </div>
+        </div>
     <script type="module" src="./src/controllers/script.mjs"></script>
 </body>
 </html>

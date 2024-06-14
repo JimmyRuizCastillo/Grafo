@@ -21,15 +21,40 @@ export default class Graph {
     addConexion(start, end, weight=1){
         if (this.#map.has(start) && this.#map.has(end)) {
             this.#listaAdyacencia[this.#map.get(start)].add(new Vertex(end,weight))
+            this.#listaAdyacencia[this.#map.get(end)].add(new Vertex(start,weight))
             return true
         }
         return false;
     }
 
+    dfs(start,end) {
+        let visited = []
+        let stack = []
+      
+        visited.push(start)
+        stack.push(start)
+      
+        while (stack.length > 0) {
+          let current = stack.pop()
+          let index = this.#map.get(current)
+          let currentNode = this.#listaAdyacencia[index].head
+          if(current == end){
+            return;
+          }
+          while (currentNode) {
+            if (!visited.includes(currentNode.value.value)) {
+              visited.push(currentNode.value.value)
+              stack.push(currentNode.value.value)
+            }
+            currentNode = currentNode.next
+          }
+        }
+      }
+    
     bfs(callback){
         let queue = []
         let list = []
-        const entries = [...structuredClone(this.#map)];
+        const entries = [...structuredClone(this.#map)]
         for (let i=0; i<this.#listaAdyacencia.length;i++)
             list[i] = false
         
@@ -50,23 +75,12 @@ export default class Graph {
         }
 
     }
-
-    printMatriz(callback){
-        for (let index = 0; index < this.#listaAdyacencia.length; index++) {
-            let row=""
-            for (let j = 0; j < this.#listaAdyacencia.length; j++) {
-                row+=this.#listaAdyacencia[index][j] + " "
-            }
-            callback(row)
-        }
-    }
     
-    printMap() {
-        this.#map.forEach((value, key) => {
-          console.log(key);
-          this.#listaAdyacencia[value].traverse((a)=>{
-            console.log(a)
-          })
-        });
-      }
+    getMap(){
+        return this.#map
+    }
+
+    getList(){
+        return this.#listaAdyacencia
+    }
 }

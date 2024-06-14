@@ -1,34 +1,37 @@
 import Graph from "../models/Graph.mjs";
-
-//let a = new Map()
-
 let g = new Graph(8)
-g.addVertices("A","B","C","D","E","F","G")
-g.addV("H")
-g.addV("I")
+let comboOrigin = document.getElementById("comboCityOrigin")
+let comboDestiny = document.getElementById("comboCityDestiny")
+let btnCheck = document.getElementById("btnCheck")
 
-g.addConexion("A","B")
-//g.addConexion("A","G")
-g.addConexion("A","C")
-g.addConexion("A","D",8)
-g.addConexion("B","E",9)
-g.addConexion("B","F",10)
-g.addConexion("D","F",11)
-g.addConexion("E","G",12)
-g.addConexion("G","H")
-g.addConexion("G","I")
+g.addVertices("Tuxtla","Cintalapa","Tonala","Arriaga","Chiapa de Corzo","Suchiapa","VillaFlores", "San Cristobal")
 
-//a.set("123",234)
+g.addConexion("Tuxtla","Cintalapa")
+g.addConexion("Tuxtla","San Cristobal")
+g.addConexion("Tuxtla","Arriaga",8)
+g.addConexion("Tuxtla","Chiapa de Corzo",11)
+g.addConexion("Arriaga","Tonala",9)
+g.addConexion("Cintalapa","Arriaga",10)
 
-//console.log(a.get("123"))
-/*const callback = (val) => {
-    console.log(val);
+
+fillComboBox(comboOrigin)
+fillComboBox(comboDestiny)
+
+function fillComboBox(comboBox){
+    g.getMap().keys().forEach((key) => {
+        let option = document.createElement('option')
+        option.textContent = key
+        comboBox.appendChild(option)
+        })
 }
-*/
-/*
-g.printMatriz((a)=>{
-    console.log(a)
+
+btnCheck.addEventListener("click",()=>{
+    console.log(g.dfs(comboOrigin.ariaValueMax, comboDestiny.value))
 })
-*/
-g.printMap()
-//g.bfs(callback)
+
+
+//g.dfs('Tuxtla')
+
+//console.log(g.getMap())
+
+//console.log(g.getList())
