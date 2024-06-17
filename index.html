@@ -4,29 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Grafo Practice</title>
 </head>
 <body>
     <div class="container-father">
-        <div id="page-name">GRAFO</div>
-        <div id="page-sub-name">Viajes</div>
+        <div id="page-sub-name">ConnectDeliver</div>
         <div id="add" class="container-tittle-elements">
-            <h2 class="text-tittle-elements">BUSCAR RUTAS</h2>
+            <h2 class="text-tittle-elements">CONFIRMAR RUTA EXISTENTE</h2>
             <div class="container-elements">
-                <h2>Nombre de la ciudad origen</h2>
+                <h2>Nombre del local de origen</h2>
                 <form>
                     <select id="comboCityOrigin">
                         
                     </select>
                   </form>
-                <h2>Nombre de la ciudad de destino</h2>
-                <select id="comboCityDestiny">
-                        
-                </select>
                 <button id="btnCheck">Verificar viaje</button>
+                <div id="showRutes"></div>
+            </div>
+        </div>
+
+        <div id="add" class="container-tittle-elements">
+            <h2 class="text-tittle-elements">AGREGAR NUEVO LOCAL</h2>
+            <div class="container-elements">
+                <h2>Agregar nuevo local</h2>
+                <form>
+                    <input id="inputAddLocal" type="text">
+                </form>
+                <h2>Nombre del local de destino de conexión</h2>
+                <select id="comboCityAddDestiny">
+                </select>
+                <h2>Distancia (A,B) km</h2>
+                <form>
+                    <input id="inputAddDistancia" type="number">
+                </form>
+                <button id="btnValidateAdd">Agregar local</button>
                 <h3 id="validation"></h3>
             </div>
         </div>
+
     <script type="module" src="./src/controllers/script.mjs"></script>
 </body>
 </html>

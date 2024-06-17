@@ -37,6 +37,11 @@ body {
     margin-bottom: 5px;
   }
   
+  .container-elements h3 {
+    color: #c8d2da;
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
   /* Estilos para los inputs */
   .container-elements input {
     appearance: none;
