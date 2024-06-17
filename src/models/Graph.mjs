@@ -41,7 +41,7 @@ export default class Graph {
       
         while (currentNode) {
           if (!visited.includes(currentNode.value.value)) {
-            this.dfsRecursive(currentNode.value.value, callback, visited);
+            return this.dfsRecursive(currentNode.value.value, callback, visited);
           }
           currentNode = currentNode.next;
         }
