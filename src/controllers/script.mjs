@@ -59,6 +59,11 @@ btnValidateAdd.addEventListener("click",()=>{
 })
 
 
+const resultado = g.dijkstra('Polleria');
+console.log(resultado.distancias);
+console.log(resultado.predecesores);
+
+
 //g.dfs('Tuxtla')
 
 console.log(g.getMap())
